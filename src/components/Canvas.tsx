@@ -32,7 +32,12 @@ function Canvas() {
         isOver ? "bg-slate-200" : "bg-white"
       } w-[390px] h-[844px] rounded-sm p-4`}
     >
-      <div className="flex flex-col gap-2" ref={drop}>
+      <div className="flex flex-col gap-2 h-full w-full" ref={drop}>
+        {(!screen?.elements || screen?.elements.length === 0) && (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-lg text-gray-400">Drop elements here</p>
+          </div>
+        )}
         {screen?.elements.map((element) => (
           <Element key={element.id} {...element} />
         ))}
